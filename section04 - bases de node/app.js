@@ -1,14 +1,13 @@
-// importando mis propios modulos
-const crearTablaMultiplicar = require("./helpers/tabla-multiplicar");
-
 console.clear();
-const multiplo = 12;
 
-crearTablaMultiplicar(multiplo)
-  .then((archivo) => {
-    console.log(`${archivo} creado`);
-  })
-  .catch((error) => {
-    console.log("ERROR");
-    console.log(error.message);
-  });
+// módulo yargs: librería dedicada a facilitar la creación de herramientas dinámicas por consola.
+const argv = require("./config/yargs");
+
+// Importación de los módulos propios del proyecto
+const crearTabla = require("./helpers/tabla-multiplicar");
+
+// Desarrollo app
+const { base, listar } = argv;
+crearTabla(base, listar)
+  .then((nombreArchivo) => console.log(`${nombreArchivo} creado`))
+  .catch((error) => console.log(error.message));

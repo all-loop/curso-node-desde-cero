@@ -22,12 +22,12 @@ const crearTablaMultiplicar = (multiplo, verMensaje = true) => {
   }
 
   return new Promise((resolve, reject) => {
-    fs.writeFileSync(`tabla-${multiplo}.txt`, tabla, (error, res) => {
+    fs.writeFile(`tabla-${multiplo}.txt`, tabla, (error, res) => {
       if (error) {
         console.log(error.message);
         reject(error);
       }
-      resolve(`tabla-${multiplo}`);
+      resolve(`tabla-${multiplo}.txt`);
     });
   });
 };
