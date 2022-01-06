@@ -1,17 +1,18 @@
 const fs = require("fs");
+const colors = require("colors");
 
 const tablaMultiplicar = (multiplo, to = 10) => {
   let salida = "";
   for (let i = 1; i <= to; i++) {
-    salida += `${multiplo} x ${i} = ${multiplo * i}\n`;
+    salida += `${multiplo} ${"x".green} ${i} ${"=".green} ${multiplo * i}\n`;
   }
   return salida;
 };
 
 const mensaje = (tabla, multiplo) => {
-  console.log("======================================");
-  console.log(` Tabla de Multiplicar del ${multiplo} `);
-  console.log("======================================");
+  console.log("======================================".green);
+  console.log("   Tabla del: ".green, colors.cyan(multiplo));
+  console.log("======================================".green);
   console.log(tabla);
 };
 
