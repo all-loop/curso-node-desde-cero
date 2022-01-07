@@ -3,27 +3,29 @@ const colors = require("colors");
 
 const tablaMultiplicar = (multiplo, to = 10) => {
   let salida = "";
+  let consola = "";
   for (let i = 1; i <= to; i++) {
-    salida += `${multiplo} ${"x".green} ${i} ${"=".green} ${multiplo * i}\n`;
+    salida += `${multiplo} x ${i} = ${multiplo * i}\n`;
+    consola += `${multiplo} ${"x".green} ${i} ${"=".green} ${multiplo * i}\n`;
   }
-  return salida;
+  return { salida, consola };
 };
 
 const mensaje = (tabla, multiplo) => {
-  console.log("======================================".green);
+  console.log("=======================".green);
   console.log("   Tabla del: ".green, colors.cyan(multiplo));
-  console.log("======================================".green);
+  console.log("=======================".green);
   console.log(tabla);
 };
 
-const crearTablaMultiplicar = (multiplo, verMensaje = true) => {
-  const tabla = tablaMultiplicar(multiplo);
+const crearTablaMultiplicar = (multiplo, to = 10, verMensaje = true) => {
+  const { salida, consola } = tablaMultiplicar(multiplo, to);
   if (verMensaje) {
-    mensaje(tabla, multiplo);
+    mensaje(consola, multiplo);
   }
 
   return new Promise((resolve, reject) => {
-    fs.writeFile(`tabla-${multiplo}.txt`, tabla, (error, res) => {
+    fs.writeFile(`tabla-${multiplo}.txt`, salida, (error, res) => {
       if (error) {
         console.log(error.message);
         reject(error);

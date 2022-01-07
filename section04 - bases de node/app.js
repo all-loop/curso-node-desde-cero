@@ -8,6 +8,6 @@ const crearTabla = require("./helpers/tabla-multiplicar");
 
 // Desarrollo app
 const { base, listar } = argv;
-crearTabla(base, listar)
+crearTabla(base, 20, listar)
   .then((nombreArchivo) => console.log(`${nombreArchivo} creado`))
   .catch((error) => console.log(error.message));
