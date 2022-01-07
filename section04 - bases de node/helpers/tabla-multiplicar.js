@@ -25,7 +25,7 @@ const crearTablaMultiplicar = (multiplo, to = 10, verMensaje = true) => {
   }
 
   return new Promise((resolve, reject) => {
-    fs.writeFile(`tabla-${multiplo}.txt`, salida, (error, res) => {
+    fs.writeFile(`./salida/tabla-${multiplo}.txt`, salida, (error, res) => {
       if (error) {
         console.log(error.message);
         reject(error);

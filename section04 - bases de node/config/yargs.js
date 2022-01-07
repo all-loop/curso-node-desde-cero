@@ -12,6 +12,12 @@ const argv = require("yargs").options({
     default: false,
     desc: "Muestra la tabla en consola",
   },
+  h: {
+    alias: "hasta",
+    type: "number",
+    default: 10,
+    desc: "Limite de la tabla de multiplicar",
+  },
 }).argv;
 
 module.exports = argv;

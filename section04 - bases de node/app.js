@@ -7,7 +7,7 @@ const argv = require("./config/yargs");
 const crearTabla = require("./helpers/tabla-multiplicar");
 
 // Desarrollo app
-const { base, listar } = argv;
-crearTabla(base, 20, listar)
+const { base, listar, hasta } = argv;
+crearTabla(base, hasta, listar)
   .then((nombreArchivo) => console.log(`${nombreArchivo} creado`))
   .catch((error) => console.log(error.message));
