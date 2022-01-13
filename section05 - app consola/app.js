@@ -1,13 +1,14 @@
 require("colors");
 
-const { mostrarMenu, pausa } = require("./helpers/mensajes");
+// importando nuestros propios módulos
+const { inquirerMenu, pausa } = require("./helpers/inquirer");
 
 console.clear();
 
 const main = async () => {
   let opt = "";
   do {
-    opt = await mostrarMenu();
+    opt = await inquirerMenu();
     await pausa();
   } while (opt !== "0");
 };
