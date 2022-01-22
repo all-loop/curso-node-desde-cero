@@ -3,6 +3,7 @@ require("colors");
 // importando nuestros propios módulos
 const { inquirerMenu, pausa, leerInput } = require("./helpers/inquirer");
 const Tareas = require("./models/tareas");
+const archvioDB = require("./helpers/archivo");
 
 console.clear();
 
@@ -19,6 +20,7 @@ const main = async () => {
       case "1":
         const desc = await leerInput("Descripción de la tarea: ");
         tareas.crearTarea(desc);
+        archvioDB.guardarDB(JSON.stringify(tareas.listadoArr));
         break;
       // opción 2 listar tareas
       case "2":
