@@ -30,7 +30,15 @@ const main = async () => {
         break;
       // opción 2 listar tareas
       case "2":
-        console.log(tareas.listadoArr);
+        tareas.listarTareas();
+        break;
+      // opcion 3 listar tareas completadas
+      case "3":
+        tareas.listarPorEstado(true);
+        break;
+      // opcion 4 listar tareas pendientes
+      case "4":
+        tareas.listarPorEstado(false);
         break;
     }
 
