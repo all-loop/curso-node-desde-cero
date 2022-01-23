@@ -33,7 +33,7 @@ class Tareas {
     Object.values(this._listado).forEach((tarea, i) => {
       const indice = `${i + 1}.`.green;
       const { desc, completadoEn } = tarea;
-      const estado = completadoEn ? "Completado".green : "Pendiente".red;
+      const estado = completadoEn ? completadoEn.green : "Pendiente".red;
       const mensaje = `${indice} ${desc} :: ${estado}`;
 
       console.log(mensaje);
@@ -48,7 +48,7 @@ class Tareas {
       .forEach((tarea, i) => {
         const indice = `${i + 1}.`.green;
         const { desc, completadoEn } = tarea;
-        const estado = completadoEn ? "Completado".green : "Pendiente".red;
+        const estado = completadoEn ? completadoEn.green : "Pendiente".red;
         console.log(`${indice} ${desc} :: ${estado}`);
       });
   }
@@ -57,6 +57,18 @@ class Tareas {
     if (this._listado[id]) {
       delete this._listado[id];
     }
+  }
+
+  cambiarEstados(ids = []) {
+    this.listadoArr.forEach((tarea) => {
+      const is = ids.includes(tarea.id);
+      if (is && !tarea.completadoEn) {
+        tarea.completadoEn = new Date().toISOString();
+      }
+      if (!is) {
+        tarea.completadoEn = null;
+      }
+    });
   }
 }
 
