@@ -1,7 +1,13 @@
 require("colors");
 
 // importando nuestros propios módulos
-const { inquirerMenu, pausa, leerInput } = require("./helpers/inquirer");
+const {
+  inquirerMenu,
+  pausa,
+  leerInput,
+  listadoTareasBorrar,
+  confirmar,
+} = require("./helpers/inquirer");
 const Tareas = require("./models/tareas");
 const archivoDB = require("./helpers/archivo");
 
@@ -39,6 +45,18 @@ const main = async () => {
       // opcion 4 listar tareas pendientes
       case "4":
         tareas.listarPorEstado(false);
+        break;
+      // opcion 6 borrar tarea
+      case "6":
+        const id = await listadoTareasBorrar(tareas.listadoArr);
+        if (id !== "0") {
+          const ok = await confirmar("¿Estás seguro de borrar la tarea?");
+          if (ok) {
+            tareas.borrarTarea(id);
+            console.log("Tarea borrada");
+            archivoDB.guardarDB(JSON.stringify(tareas.listadoArr));
+          }
+        }
         break;
     }
 
