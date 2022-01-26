@@ -67,8 +67,36 @@ const stop = async () => {
   return;
 };
 
+const seleccionar = async (lugares) => {
+  const choices = lugares.map((lugar, id) => {
+    const idx = `${id + 1}.`.green;
+    return {
+      value: lugar.id,
+      name: `${idx} ${lugar.nombre}`,
+    };
+  });
+
+  choices.unshift({
+    Value: "0",
+    name: `${"0.".green} cancelar`,
+  });
+
+  const options = [
+    {
+      type: "list",
+      name: "id",
+      message: "Seleccionar",
+      choices,
+    },
+  ];
+
+  const { id } = await inquirer.prompt(options);
+  return id;
+};
+
 module.exports = {
   readInput,
   menu,
   stop,
+  seleccionar,
 };

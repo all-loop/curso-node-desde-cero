@@ -1,6 +1,9 @@
+// configuración de nuestras variables de entorno
+require("dotenv").config();
+
 // importación de nuestros propios módulos y clases
 const terminal = require("./helpers/inquirer");
-const Busqueda = require("./models/busqueda");
+const Busqueda = require("./models/Busqueda");
 
 const main = async () => {
   const busqueda = new Busqueda();
@@ -14,21 +17,27 @@ const main = async () => {
       console.log("\nCerrando programa...");
       break;
     } else if (option === "1") {
-      // Buscamos una ciudad
-      // TODO:
-      //  1. Mostrar mensaje
+      // Buscamos un lugar
+      //  1. Solicitar lugar
       const lugar = await terminal.readInput("Lugar a buscar: ");
-      await busqueda.lugar(lugar);
 
-      //  2. Buscar los lugares
-      //  3. Seleccionar el lugar
-      //  4. Clima
-      //  5. Mostrar resultados
+      //  2. Buscar los lugares (5 resultados) con mapbox
+      const resultado = await busqueda.lugar(lugar);
+
+      //  3. Seleccionar uno de los lugares resultantes
+      const id = await terminal.seleccionar(resultado);
+      const seleccionado = resultado.find((l) => l.id === id);
+
+      //  4. Buscar y asociar clima del lugar seleccionado
+
+      //  5. Mostrar resultado
       console.log("\nInformación de la ciudad:\n".cyan);
-      console.log("Ciudad:");
-      console.log("Lat:");
-      console.log("Lng:");
+      console.log("Ciudad:", seleccionado.nombre);
+      console.log("Lat:", seleccionado.lat);
+      console.log("Lng:", seleccionado.lng);
       console.log("Temperatura (°C):");
+      console.log("Mínima (°C):");
+      console.log("Máxima (°C):");
     } else {
       // Mostramos el historial de búsqueda
       console.log({ option });
