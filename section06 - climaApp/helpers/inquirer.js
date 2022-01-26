@@ -52,9 +52,9 @@ const stop = async () => {
     {
       type: "input",
       name: "description",
-      message: `${"ENTER".green} para continuar o ${
+      message: `\n${"ENTER".green} para continuar o ${
         "CTRL-C".green
-      } para salir del programa...`,
+      } para salir del programa...\n`,
     },
   ];
   await inquirer.prompt(question);
