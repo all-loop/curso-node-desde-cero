@@ -17,8 +17,8 @@ const main = async () => {
       // Buscamos una ciudad
       // TODO:
       //  1. Mostrar mensaje
-      const lugar = await terminal.readInput("Ciudad a buscar: ");
-      console.log(lugar);
+      const lugar = await terminal.readInput("Lugar a buscar: ");
+      await busqueda.lugar(lugar);
 
       //  2. Buscar los lugares
       //  3. Seleccionar el lugar

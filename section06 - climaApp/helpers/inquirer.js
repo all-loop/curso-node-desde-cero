@@ -2,6 +2,7 @@ const inquirer = require("inquirer");
 require("colors");
 
 const readInput = async (message) => {
+  console.clear();
   const question = [
     {
       type: "input",
@@ -21,6 +22,11 @@ const readInput = async (message) => {
 };
 
 const menu = async () => {
+  console.log("=============================");
+  console.log("   Seleccione una opción".green);
+  console.log("=============================");
+  console.log();
+
   const options = [
     {
       type: "list",
