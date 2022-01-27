@@ -16,7 +16,7 @@ const readInput = async (message) => {
       },
     },
   ];
-
+  console.clear();
   const { description } = await inquirer.prompt(question);
   return description;
 };
@@ -77,7 +77,7 @@ const seleccionar = async (lugares) => {
   });
 
   choices.unshift({
-    Value: "0",
+    value: "0",
     name: `${"0.".green} cancelar`,
   });
 
@@ -90,6 +90,7 @@ const seleccionar = async (lugares) => {
     },
   ];
 
+  console.clear();
   const { id } = await inquirer.prompt(options);
   return id;
 };
