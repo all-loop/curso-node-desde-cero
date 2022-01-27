@@ -1,0 +1,13 @@
+{
+  "name": "webserver",
+  "description": "desarrollo y ejemplo de servidor web",
+  "version": "1.0.0",
+  "author": "GFU",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
