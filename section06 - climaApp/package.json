@@ -1,0 +1,19 @@
+{
+  "name": "clima-app",
+  "description": "informativo climático por consola, prácticando el manejo y uso de apis externas.",
+  "version": "1.0.0",
+  "author": "GFU",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "axios": "^0.25.0",
+    "colors": "^1.4.0",
+    "dotenv": "^14.3.2",
+    "inquirer": "^8.2.0"
+  }
+}
