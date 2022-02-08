@@ -1,12 +1,12 @@
-const http = require("http");
+const express = require("express");
+const app = express();
 
-// Creación de un servidor con http
-const server = http.createServer((req, res) => {
-  res.write("Hola Mundo");
-  res.end();
+const port = 8080;
+
+app.get("/", (req, res) => {
+  res.send("Hola Mundo");
 });
 
-// Habilitamos y colocamos disponiblos nuestro servidor
-server.listen(8080, () => {
-  console.log("Servidor corriendo en el puerto 8080");
+app.listen(port, () => {
+  console.log(`Server listening at http://localhost:${port}`);
 });
