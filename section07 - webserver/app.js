@@ -12,7 +12,15 @@ app.use(express.static("public"));
 
 // Asociamos la ruta "/" de nuestro servidor a un callback y su lógica.
 app.get("/", (req, res) => {
-  res.send("Hola Mundo");
+  res.sendFile(__dirname + "/public/index.html");
+});
+
+app.get("/generic", (req, res) => {
+  res.sendFile(__dirname + "/public/generic.html");
+});
+
+app.get("/elements", (req, res) => {
+  res.sendFile(__dirname + "/public/elements.html");
 });
 
 // Capturamos toda petición que no haya coincido con una ruta de nuestro servidor.
