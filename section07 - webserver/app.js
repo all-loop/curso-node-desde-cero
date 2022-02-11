@@ -1,5 +1,6 @@
 // express es un módulo enfocado en la creación de servidores webs.
 const express = require("express");
+const hbs = require("hbs");
 
 // Creamos una aplicación express (servidor)
 const app = express();
@@ -10,31 +11,34 @@ const port = 8080;
 
 // Conf: motor de plantillas
 app.set("view engine", "hbs");
+hbs.registerPartials(__dirname + "/views/partials", function (err) {});
 
 // Middleware: Son callbacks que vienen a complementar y modificar la cadena lógica, todo el proceso desde que se recibe una solicitud hasta que se le da respuesta, de nuestro servidor.
 
 // Middleware para servir contenido estático
 app.use(express.static("public"));
 
+const argumentos = {
+  nombre: "Fernando Herrera",
+  titulo: "Curso de Node",
+};
+
 // Asociamos la ruta "/" de nuestro servidor a un callback y su lógica.
 app.get("/", (req, res) => {
-  res.render("home", {
-    nombre: "Goku",
-    titulo: "curso de Node",
-  });
+  res.render("home", argumentos);
 });
 
 app.get("/generic", (req, res) => {
-  res.sendFile(__dirname + "/public/generic.html");
+  res.render("generic", argumentos);
 });
 
 app.get("/elements", (req, res) => {
-  res.sendFile(__dirname + "/public/elements.html");
+  res.render("elements", argumentos);
 });
 
 // Capturamos toda petición que no haya coincido con una ruta de nuestro servidor.
 app.get("*", (req, res) => {
-  res.sendFile(__dirname + "/public/404.html");
+  res.render("404", argumentos);
 });
 
 // Definimos el puerto por el cuál recibiremos y escucharemos las solicitudes del cliente.
