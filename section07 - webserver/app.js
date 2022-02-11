@@ -1,3 +1,6 @@
+// Cargamos nuestras variables de entorno previamente configuradas en el archivo .env
+require("dotenv").config();
+
 // express es un módulo enfocado en la creación de servidores webs.
 const express = require("express");
 const hbs = require("hbs");
@@ -5,7 +8,7 @@ const hbs = require("hbs");
 // Creamos una aplicación express (servidor)
 const app = express();
 
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 // Configuraciones de nuestro servidor
 
