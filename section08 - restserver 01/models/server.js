@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 
 // Clase que representará nuestros servidores creados bajo express
 class Server {
@@ -17,6 +18,9 @@ class Server {
   }
 
   middlewares() {
+    // CORS
+    this.app.use(cors());
+
     // Directorio público
     this.app.use(express.static("public"));
   }
@@ -28,15 +32,15 @@ class Server {
       });
     });
 
-    this.app.post("/api", (req, res) => {
-      res.json({
-        msg: "POST API",
-      });
-    });
-
     this.app.patch("/api", (req, res) => {
       res.json({
         msg: "PATCH API",
+      });
+    });
+
+    this.app.post("/api", (req, res) => {
+      res.status(201).json({
+        msg: "POST API",
       });
     });
 
