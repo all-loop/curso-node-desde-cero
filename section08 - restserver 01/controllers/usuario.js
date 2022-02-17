@@ -1,14 +1,19 @@
-const { response, request } = require("express");
-
 const usuarioGet = (req, res) => {
+  const query = req.query;
+
   res.json({
     msg: "GET API",
+    query,
   });
 };
 
 const usuarioPost = (req, res) => {
+  const { nombre, edad } = req.body;
+
   res.status(201).json({
     msg: "POST API",
+    nombre,
+    edad,
   });
 };
 
@@ -19,8 +24,11 @@ const usuarioPatch = (req, res) => {
 };
 
 const usuarioPut = (req, res) => {
+  const { id } = req.params;
+
   res.json({
     msg: "PUT API",
+    id,
   });
 };
 

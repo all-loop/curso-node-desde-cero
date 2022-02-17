@@ -10,7 +10,7 @@ router.patch("/", usuarioController.usuarioPatch);
 
 router.post("/", usuarioController.usuarioPost);
 
-router.put("/", usuarioController.usuarioPut);
+router.put("/:id", usuarioController.usuarioPut);
 
 router.delete("/", usuarioController.usuarioDelete);
 
